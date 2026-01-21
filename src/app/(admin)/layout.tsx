@@ -13,11 +13,11 @@ export default function AdminLayout({
     children: React.ReactNode;
 }) {
     return (
-        <Layout style={{ minHeight: '100vh' }}>
+        <Layout style={{ minHeight: '100vh' }} hasSider>
             <Sidebar />
-            <Layout style={{ marginLeft: 260, background: '#f8fafc' }}>
+            <Layout style={{ marginLeft: 260, background: '#f8fafc', transition: 'all 0.2s' }}>
                 <Header />
-                <Content style={{ margin: '24px', overflow: 'initial' }}>
+                <Content style={{ margin: '20px', overflow: 'initial' }}>
                     <div className="w-full pb-12">
                         {children}
                     </div>

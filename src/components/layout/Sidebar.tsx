@@ -39,7 +39,23 @@ const Sidebar = () => {
     const activeKey = menuItems.find(item => pathname.startsWith(item.key))?.key || '/dashboard';
 
     return (
-        <Sider width={260} className="border-r border-slate-800 h-screen fixed left-0 top-0 z-10" style={{ background: '#0f172a' }}>
+        <Sider
+            width={260}
+            trigger={null}
+            collapsible
+            className="border-r border-slate-800"
+            style={{
+                overflow: 'auto',
+                height: '100vh',
+                position: 'fixed',
+                left: 0,
+                top: 0,
+                bottom: 0,
+                zIndex: 10,
+                background: '#0f172a',
+                borderRight: '1px solid #1e293b'
+            }}
+        >
             <div className="h-16 flex items-center justify-center border-b border-slate-800/50">
                 <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
