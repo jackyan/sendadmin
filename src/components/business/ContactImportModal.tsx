@@ -50,12 +50,13 @@ const ContactImportModal: React.FC<ContactImportModalProps> = ({ open, onCancel,
                             return false; // Prevent auto upload
                         }}
                         onRemove={() => setFileList([])}
+                        style={{ background: '#e0e7ff30', border: '2px dashed #c7d2fe', borderRadius: '12px' }}
                     >
                         <p className="ant-upload-drag-icon">
-                            <InboxOutlined />
+                            <InboxOutlined className="text-indigo-400" />
                         </p>
-                        <p className="ant-upload-text">{t.importModal.dragText}</p>
-                        <p className="ant-upload-hint">{t.importModal.supportText}</p>
+                        <p className="ant-upload-text text-slate-600 font-medium">{t.importModal.dragText}</p>
+                        <p className="ant-upload-hint text-slate-400">{t.importModal.supportText}</p>
                     </Dragger>
                 </div>
             ),
@@ -81,8 +82,10 @@ const ContactImportModal: React.FC<ContactImportModalProps> = ({ open, onCancel,
             content: (
                 <div className="py-8 space-y-4">
                     <p className="text-gray-500 mb-4">{t.importModal.tagTitle}</p>
-                    <div className="bg-gray-50 p-6 rounded-lg border border-gray-100 flex flex-col items-center justify-center space-y-4">
-                        <TagsOutlined style={{ fontSize: 24, color: '#6366f1' }} />
+                    <div className="bg-gray-50/50 p-8 rounded-2xl border border-gray-100 flex flex-col items-center justify-center space-y-4 shadow-sm">
+                        <div className="w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center">
+                            <TagsOutlined style={{ fontSize: 24, color: '#6366f1' }} />
+                        </div>
                         <Select
                             mode="tags"
                             style={{ width: '100%', maxWidth: 300 }}
@@ -99,14 +102,16 @@ const ContactImportModal: React.FC<ContactImportModalProps> = ({ open, onCancel,
             title: t.importModal.step4,
             content: (
                 <div className="py-8">
-                    <div className="bg-gray-50 p-4 rounded border border-gray-200 text-center">
-                        <FileExcelOutlined style={{ fontSize: 32, color: '#10B981' }} />
-                        <h3 className="mt-2 font-medium">{t.importModal.ready}</h3>
-                        <p className="text-gray-500">File: {fileList[0]?.name}</p>
-                        <p className="text-gray-500">{t.importModal.rowEst}: 50</p>
+                    <div className="bg-emerald-50/50 p-8 rounded-2xl border border-emerald-100 text-center shadow-sm">
+                        <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <FileExcelOutlined style={{ fontSize: 32, color: '#10B981' }} />
+                        </div>
+                        <h3 className="mt-2 text-lg font-bold text-slate-800">{t.importModal.ready}</h3>
+                        <p className="text-slate-500 mb-2">File: {fileList[0]?.name}</p>
+                        <p className="text-slate-500 font-medium">{t.importModal.rowEst}: <span className="text-emerald-600">50</span></p>
                         {tags.length > 0 && (
-                            <div className="mt-2">
-                                {tags.map(tag => <Tag key={tag} color="blue">{tag}</Tag>)}
+                            <div className="mt-4 flex flex-wrap justify-center gap-2">
+                                {tags.map(tag => <Tag key={tag} color="blue" className="px-3 py-1 rounded-full text-sm border-none bg-indigo-50 text-indigo-600 font-semibold">{tag}</Tag>)}
                             </div>
                         )}
                     </div>
