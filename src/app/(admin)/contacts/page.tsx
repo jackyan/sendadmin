@@ -52,7 +52,7 @@ export default function ContactsPage() {
                 </Space>
             </div>
 
-            <div className="bg-white px-6 py-4 rounded-xl shadow-sm border-none flex justify-between items-center">
+            <div className="bg-white p-4 rounded-xl shadow-sm border-none flex justify-between items-center">
                 <Input
                     prefix={<Search size={16} className="text-gray-400" />}
                     placeholder={t.common.search}

@@ -17,8 +17,8 @@ export default function AdminLayout({
             <Sidebar />
             <Layout style={{ marginLeft: 260, background: '#f8fafc' }}>
                 <Header />
-                <Content style={{ margin: '24px 24px 0', overflow: 'initial' }}>
-                    <div className="max-w-7xl mx-auto pb-12">
+                <Content style={{ margin: '24px', overflow: 'initial' }}>
+                    <div className="w-full pb-12">
                         {children}
                     </div>
                 </Content>
