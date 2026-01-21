@@ -29,8 +29,8 @@ export const MOCK_CAMPAIGNS = [
 ];
 
 export const MOCK_LINKS = [
-    { id: 'l1', title: 'Q1 Survey', target: 'Question Set A', clicks: 124, created: '2023-01-10' },
-    { id: 'l2', title: 'Product Demo', target: 'Question Set B', clicks: 45, created: '2023-01-15' }
+    { id: 'l1', title: 'Q1 Survey', target: 'Question Set A', clicks: 124, created: '2023-01-10', type: 'campaign' },
+    { id: 'l2', title: 'Product Demo', target: 'Question Set B', clicks: 45, created: '2023-01-15', type: 'manual' }
 ]
 
 export const QUESTIONS_SET = [

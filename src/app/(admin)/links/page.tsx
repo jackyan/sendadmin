@@ -38,10 +38,20 @@ export default function LinksPage() {
             }
         },
         {
+            title: t.links.table.source,
+            dataIndex: 'type',
+            key: 'type',
+            render: (type: 'manual' | 'campaign') => (
+                <Tag color={type === 'manual' ? 'blue' : 'purple'}>
+                    {type === 'manual' ? t.links.sources.manual : t.links.sources.campaign}
+                </Tag>
+            )
+        },
+        {
             title: 'Target',
             dataIndex: 'target',
             key: 'target',
-            render: (text: string) => <Tag>{text}</Tag>
+            render: (text: string) => <Tag color="default">{text}</Tag>
         },
         {
             title: t.links.table.clicks,

@@ -144,6 +144,11 @@ export const translations = {
                 url: 'Short URL',
                 clicks: 'Clicks',
                 created: 'Created At',
+                source: 'Source',
+            },
+            sources: {
+                manual: 'Manual',
+                campaign: 'Campaign',
             }
         },
         importModal: {
@@ -262,6 +267,11 @@ export const translations = {
                 url: '短链接',
                 clicks: '点击量',
                 created: '创建时间',
+                source: '来源',
+            },
+            sources: {
+                manual: '手动创建',
+                campaign: '营销活动',
             }
         },
         dashboard: {
