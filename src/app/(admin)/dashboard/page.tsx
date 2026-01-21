@@ -100,7 +100,7 @@ export default function DashboardPage() {
 
             <Row gutter={[16, 16]}>
                 <Col xs={24} lg={16}>
-                    <Card title={t.dashboard.recentCampaigns} bordered={false} className="shadow-sm">
+                    <Card title={t.dashboard.recentCampaigns}>
                         <Table
                             dataSource={MOCK_CAMPAIGNS}
                             columns={columns}
@@ -110,7 +110,7 @@ export default function DashboardPage() {
                     </Card>
                 </Col>
                 <Col xs={24} lg={8}>
-                    <Card title={t.dashboard.systemHealth} bordered={false} className="shadow-sm h-full">
+                    <Card title={t.dashboard.systemHealth} className="h-full">
                         <div className="space-y-6">
                             <div>
                                 <div className="flex justify-between mb-1">

@@ -2,26 +2,35 @@
 
 :root {
   /* Premium Palette */
-  --primary: #6366f1;       /* Indigo 500 */
-  --primary-light: #e0e7ff; /* Indigo 100 */
-  --secondary: #475569;     /* Slate 600 */
-  
-  --background: #f8fafc;    /* Slate 50 */
-  --surface: #ffffff;       /* White */
-  
-  --text-main: #1e293b;     /* Slate 800 */
-  --text-muted: #64748b;    /* Slate 500 */
-  
-  --border-soft: #f1f5f9;   /* Slate 100 */
+  --primary: #6366f1;
+  /* Indigo 500 */
+  --primary-light: #e0e7ff;
+  /* Indigo 100 */
+  --secondary: #475569;
+  /* Slate 600 */
+
+  --background: #f8fafc;
+  /* Slate 50 */
+  --surface: #ffffff;
+  /* White */
+
+  --text-main: #1e293b;
+  /* Slate 800 */
+  --text-muted: #64748b;
+  /* Slate 500 */
+
+  --border-soft: #f1f5f9;
+  /* Slate 100 */
 }
 
 @theme inline {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  
+
   /* Color Aliases */
   --color-brand: var(--primary);
   --color-brand-light: var(--primary-light);
-  --color-dark-sidebar: #0f172a; /* Slate 900 */
+  --color-dark-sidebar: #0f172a;
+  /* Slate 900 */
 }
 
 body {
@@ -31,51 +40,161 @@ body {
 }
 
 /* Ant Design Overrides for "Soft Modern" */
+
+/* Buttons */
 .ant-btn-primary {
   background: var(--primary) !important;
-  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3) !important;
+  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.4), 0 2px 4px -1px rgba(99, 102, 241, 0.2) !important;
   border-radius: 8px !important;
+  border: none !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  height: 38px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em;
 }
 
+.ant-btn-default {
+  border: none !important;
+  background: #ffffff !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+  border-radius: 8px !important;
+  color: var(--secondary) !important;
+}
+
+.ant-btn-default:hover {
+  color: var(--primary) !important;
+  background: #f8fafc !important;
+}
+
+/* Inputs & Selects */
+.ant-input,
+.ant-picker,
+.ant-input-number,
+.ant-select-selector {
+  border-radius: 8px !important;
+  border: 1px solid transparent !important;
+  background-color: #f1f5f9 !important;
+  /* Slate 100 */
+  box-shadow: none !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  transition: all 0.2s ease;
+}
+
+.ant-input:focus,
+.ant-input-focused,
+.ant-picker-focused,
+.ant-select-focused .ant-select-selector {
+  background-color: #ffffff !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1) !important;
+}
+
+/* Cards */
 .ant-card {
   border-radius: 16px !important;
   border: none !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.03), 0 4px 6px -2px rgba(0, 0, 0, 0.02) !important;
+  /* Soft diffuse shadow */
+  background: #ffffff !important;
+  overflow: hidden;
 }
 
-.ant-input, .ant-select-selector {
-  border-radius: 8px !important;
-  border-color: #e2e8f0 !important;
-  background-color: #f8fafc !important; /* Slight gray background */
-}
-
-.ant-input:focus, .ant-input-focused {
-    background-color: #fff !important;
-    border-color: var(--primary) !important;
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1) !important;
-}
-
-.ant-table-thead > tr > th {
-    background: #f8fafc !important;
-    color: #64748b !important;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 0.05em;
-    border-bottom: 1px solid #f1f5f9 !important;
+/* Tables */
+.ant-table-thead>tr>th {
+  background: #f8fafc !important;
+  /* Slate 50 */
+  color: #64748b !important;
+  /* Slate 500 */
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 600 !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
 }
 
 .ant-table-wrapper .ant-table-container {
-    border-radius: 12px;
+  border-radius: 12px;
 }
 
+.ant-table-tbody>tr>td {
+  border-bottom: 1px solid #f8fafc !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+.ant-table-row:hover>td {
+  background: #f8fafc !important;
+}
+
+/* Modals */
 .ant-modal-content {
-    border-radius: 16px !important;
-    padding: 24px !important;
+  border-radius: 20px !important;
+  padding: 32px !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
 }
 
+.ant-modal-mask {
+  backdrop-filter: blur(4px);
+  background-color: rgba(15, 23, 42, 0.4) !important;
+  /* Slate 900 with opacity */
+}
+
+/* Tabs */
+.ant-tabs-nav::before {
+  border-bottom: none !important;
+}
+
+.ant-tabs-tab {
+  padding: 8px 16px !important;
+  border-radius: 9999px !important;
+  transition: all 0.3s ease !important;
+  color: #64748b !important;
+}
+
+.ant-tabs-tab-active {
+  background: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--primary) !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+}
+
+.ant-tabs-ink-bar {
+  display: none !important;
+}
+
+/* Tags */
 .ant-tag {
-    border: none !important;
-    border-radius: 6px !important;
-    padding: 2px 10px !important;
-    font-weight: 500;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 2px 10px !important;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Steps (Wizard) */
+.ant-steps-item-process .ant-steps-item-icon {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+}
+
+.ant-steps-item-finish .ant-steps-item-icon {
+  background: transparent !important;
+  border-color: var(--primary) !important;
+}
+
+.ant-steps-item-finish .ant-steps-item-icon>.ant-steps-icon {
+  color: var(--primary) !important;
+}
+
+.ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-tail::after {
+  background-color: var(--primary) !important;
 }

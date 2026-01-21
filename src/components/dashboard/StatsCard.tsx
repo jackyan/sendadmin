@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, Statistic } from 'antd';
-import { ArrowUp, ArrowDown } from 'lucide-react';
+import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
 import clsx from 'clsx';
 
 interface StatsCardProps {
@@ -15,22 +15,29 @@ interface StatsCardProps {
 }
 
 const StatsCard: React.FC<StatsCardProps> = ({ title, value, prefix, suffix, trend, loading }) => {
+    const isPositive = trend !== undefined && trend >= 0; // Define isPositive based on trend
+
     return (
-        <Card bordered={false} loading={loading} className="shadow-sm hover:shadow-md transition-shadow">
-            <Statistic
-                title={<span className="text-gray-500 font-medium">{title}</span>}
-                value={value}
-                prefix={prefix}
-                suffix={suffix}
-                valueStyle={{ fontWeight: 600, color: '#111827' }}
-            />
-            {trend !== undefined && (
-                <div className={clsx("flex items-center gap-1 mt-2 text-sm", trend >= 0 ? "text-green-600" : "text-red-500")}>
-                    {trend >= 0 ? <ArrowUp size={14} /> : <ArrowDown size={14} />}
-                    <span className="font-medium">{Math.abs(trend)}%</span>
-                    <span className="text-gray-400 font-normal ml-1">vs last week</span>
+        <Card bordered={false} bodyStyle={{ padding: '24px' }} className="h-full" loading={loading}>
+            <div className="flex justify-between items-start mb-4">
+                <div className="flex items-center">
+                    {prefix && <div className="p-2 bg-indigo-50 rounded-lg mr-3">{prefix}</div>}
+                    <span className="text-slate-500 font-medium text-sm">{title}</span>
                 </div>
-            )}
+            </div>
+            <div className="flex items-end justify-between">
+                <div>
+                    <h3 className="text-3xl font-bold text-slate-800 tracking-tight">{value}</h3>
+                </div>
+                {trend !== undefined && (
+                    <div className={`flex items-center text-sm font-semibold px-2 py-1 rounded-full ${isPositive ? 'bg-emerald-50 text-emerald-600' : 'bg-rose-50 text-rose-600'
+                        }`}>
+                        {isPositive ? <ArrowUpRight size={14} className="mr-1" /> : <ArrowDownRight size={14} className="mr-1" />}
+                        {Math.abs(trend)}%
+                        <span className="text-slate-400 font-normal ml-1 text-xs">vs last week</span>
+                    </div>
+                )}
+            </div>
         </Card>
     );
 };
