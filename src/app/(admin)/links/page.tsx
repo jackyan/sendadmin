@@ -25,14 +25,18 @@ export default function LinksPage() {
         },
         {
             title: t.links.table.url,
-            dataIndex: 'id', // Simulating short link from ID
             key: 'url',
-            render: (id: string) => {
-                const url = `https://ln.k/${id}`;
+            render: (_: any, record: any) => {
+                const isCampaign = record.type === 'campaign';
+                const url = isCampaign ? t.links.table.dynamic : `https://ln.k/${record.id}`;
+
                 return (
-                    <div className="flex items-center gap-2 group cursor-pointer p-1 rounded hover:bg-gray-50" onClick={() => handleCopy(url)}>
-                        <span className="text-blue-500 font-mono text-sm">{url}</span>
-                        <Copy size={14} className="text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div
+                        className={`flex items-center gap-2 group p-1 rounded ${!isCampaign ? 'cursor-pointer hover:bg-gray-50' : 'text-gray-400 italic'}`}
+                        onClick={() => !isCampaign && handleCopy(url)}
+                    >
+                        <span className={`${!isCampaign ? 'text-blue-500' : ''} font-mono text-sm`}>{url}</span>
+                        {!isCampaign && <Copy size={14} className="text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" />}
                     </div>
                 );
             }
@@ -70,7 +74,12 @@ export default function LinksPage() {
             key: 'action',
             render: (_: any, record: any) => (
                 <Space>
-                    <Button size="small" icon={<ExternalLink size={14} />} href={`https://ln.k/${record.id}`} target="_blank" />
+                    <Button
+                        size="small"
+                        icon={<ExternalLink size={14} />}
+                        onClick={() => window.open(`/s/demo`, '_blank')}
+                        title="Preview"
+                    />
                 </Space>
             )
         }

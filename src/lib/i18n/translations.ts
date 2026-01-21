@@ -142,9 +142,10 @@ export const translations = {
             table: {
                 title: 'Title',
                 url: 'Short URL',
-                clicks: 'Clicks',
+                clicks: 'Total Clicks',
                 created: 'Created At',
                 source: 'Source',
+                dynamic: '[Dynamic Unique Links]',
             },
             sources: {
                 manual: 'Manual',
@@ -265,9 +266,10 @@ export const translations = {
             table: {
                 title: '标题',
                 url: '短链接',
-                clicks: '点击量',
+                clicks: '总点击量',
                 created: '创建时间',
                 source: '来源',
+                dynamic: '[动态唯一链接]',
             },
             sources: {
                 manual: '手动创建',
