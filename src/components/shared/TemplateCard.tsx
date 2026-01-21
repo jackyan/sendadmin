@@ -22,29 +22,31 @@ const TemplateCard: React.FC<TemplateCardProps> = ({ template }) => {
     const statusLabel = t.templates.status[template.status as keyof typeof t.templates.status] || template.status;
 
     return (
-        <div className="bg-[#FAF8F3] rounded-lg border border-[#E9E4D9] p-6 hover:shadow-md transition-shadow relative">
+        <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 relative border border-transparent hover:border-indigo-100 group">
             <div className="flex justify-between items-start mb-4">
                 <Tag color={statusColor} className="rounded-full px-3 py-1 border-0 uppercase font-bold tracking-wide">
                     {statusLabel}
                 </Tag>
-                <Tag color="gold" className="rounded-full px-3 py-0.5 border-[#D4C391] text-[#7A693B] bg-[#EADDAD]">
+                <Tag className="rounded-full px-3 py-0.5 border-0 bg-amber-50 text-amber-700 font-medium">
                     {template.language}
                 </Tag>
             </div>
 
-            <h3 className="text-xl font-bold text-gray-900 mb-2">{template.name}</h3>
+            <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">{template.name}</h3>
 
-            <div className="text-xs text-gray-500 font-mono mb-6 uppercase tracking-wider">
-                {template.category} • Quality: <span className="font-bold">{template.quality}</span>
+            <div className="text-xs text-slate-500 font-medium mb-6 uppercase tracking-wider flex items-center gap-2">
+                <span className="bg-slate-100 px-2 py-1 rounded">{template.category}</span>
+                <span>•</span>
+                <span>Quality: <span className="text-emerald-600 font-bold">{template.quality}</span></span>
             </div>
 
-            <div className="bg-[#EFEDE6] rounded p-4 mb-6 text-gray-700 text-sm leading-relaxed whitespace-pre-wrap">
+            <div className="bg-slate-50 rounded-xl p-5 mb-6 text-slate-600 text-sm leading-relaxed whitespace-pre-wrap border border-slate-100">
                 {template.content}
             </div>
 
             {/* Buttons removed as per requirement */}
 
-            <div className="flex justify-between items-center pt-4 border-t border-[#E9E4D9]">
+            <div className="flex justify-between items-center pt-4 border-t border-slate-100">
                 <div className="flex items-center gap-2 text-gray-600 hover:text-gray-900 cursor-pointer">
                     <Copy size={16} />
                     <span className="text-sm font-medium">Copy ID</span>

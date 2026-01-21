@@ -100,7 +100,7 @@ export default function LinksPage() {
                 </Button>
             </div>
 
-            <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+            <div className="bg-white p-4 rounded-xl shadow-sm">
                 <div className="mb-4">
                     <Input
                         prefix={<Search size={16} className="text-gray-400" />}

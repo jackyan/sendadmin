@@ -66,7 +66,7 @@ const ChannelCard: React.FC<ChannelCardProps> = ({ id, type, name, identifier, s
                         )}
                     </div>
 
-                    <div className="w-full pt-4 border-t border-gray-100 flex justify-center gap-2">
+                    <div className="w-full pt-4 border-t border-slate-50 flex justify-center gap-2">
                         {status === 'connected' ? (
                             <>
                                 <Button icon={<RefreshCw size={14} />}>Sync</Button>

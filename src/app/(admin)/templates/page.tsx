@@ -32,7 +32,7 @@ export default function TemplatesPage() {
                 </Button>
             </div>
 
-            <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+            <div className="bg-slate-50 p-4 rounded-xl">
                 <Tabs
                     activeKey={activeTab}
                     onChange={setActiveTab}

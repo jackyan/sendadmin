@@ -34,7 +34,7 @@ export default function ReportsPage() {
                 </Space>
             </div>
 
-            <div className="bg-white rounded-lg shadow-sm">
+            <div className="bg-white rounded-xl shadow-sm">
                 <Tabs
                     defaultActiveKey="1"
                     tabBarStyle={{ paddingLeft: 24, paddingRight: 24 }}
