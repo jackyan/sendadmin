@@ -52,19 +52,19 @@ export default function ContactsPage() {
                 </Space>
             </div>
 
-            <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex justify-between items-center">
+            <div className="bg-white p-4 rounded-xl shadow-sm border-none flex justify-between items-center">
                 <Input
                     prefix={<Search size={16} className="text-gray-400" />}
                     placeholder={t.common.search}
-                    className="w-full max-w-md"
+                    className="w-full max-w-md bg-slate-50 border-transparent focus:bg-white transition-all"
                 />
                 <Space>
                     {selectedRowKeys.length > 0 && (
-                        <span className="text-sm text-indigo-600 font-medium bg-indigo-50 px-2 py-1 rounded">
+                        <span className="text-sm text-indigo-600 font-medium bg-indigo-50 px-3 py-1 rounded-full">
                             {selectedRowKeys.length} selected
                         </span>
                     )}
-                    <Button icon={<Filter size={16} />}>{t.common.filters}</Button>
+                    <Button icon={<Filter size={16} />} className="border-none shadow-sm text-slate-600 hover:text-indigo-600">{t.common.filters}</Button>
                 </Space>
             </div>
 
@@ -83,24 +83,36 @@ export default function ContactsPage() {
                         dataIndex="channel"
                         key="channel"
                         render={(channel) => (
-                            <Tag color={channel === 'whatsapp' ? 'green' : 'blue'}>
+                            <span className={`px-2.5 py-1 rounded-md text-xs font-semibold ${channel === 'whatsapp' ? 'bg-green-50 text-green-600' : 'bg-blue-50 text-blue-600'
+                                }`}>
                                 {channel ? channel.toUpperCase() : 'WHATSAPP'}
-                            </Tag>
+                            </span>
                         )}
                     />
                     <Column
                         title={t.contacts.fields.tags}
-                        dataIndex="tags"
                         key="tags"
-                        render={(tags: string[]) => (
-                            <>
-                                {tags.map(tag => (
-                                    <Tag key={tag} color={tag === 'VIP' ? 'gold' : 'blue'}>{tag}</Tag>
-                                ))}
-                            </>
-                        )}
+                        dataIndex="tags"
+                        render={(tags: any) => {
+                            const safeTags = Array.isArray(tags) ? tags : [];
+                            return (
+                                <div className="flex gap-1">
+                                    {safeTags.map((tag: string) => (
+                                        <span key={tag} className={`px-2 py-0.5 rounded text-xs font-medium ${tag === 'VIP' ? 'bg-amber-50 text-amber-600' : 'bg-slate-100 text-slate-600'
+                                            }`}>
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            );
+                        }}
                     />
-                    <Column title={t.contacts.fields.status} dataIndex="status" key="status" render={() => <Tag color="success">Active</Tag>} />
+                    <Column title={t.contacts.fields.status} dataIndex="status" key="status" render={() => (
+                        <div className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                            <span className="text-sm text-slate-600">Active</span>
+                        </div>
+                    )} />
                     <Column
                         title={t.common.actions}
                         key="action"

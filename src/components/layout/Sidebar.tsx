@@ -39,16 +39,23 @@ const Sidebar = () => {
     const activeKey = menuItems.find(item => pathname.startsWith(item.key))?.key || '/dashboard';
 
     return (
-        <Sider width={240} theme="light" className="border-r border-gray-200 h-screen fixed left-0 top-0 z-10">
-            <div className="h-16 flex items-center justify-center border-b border-gray-100">
-                <h1 className="text-xl font-bold text-indigo-600 tracking-tight">SendAdmin</h1>
+        <Sider width={260} className="border-r border-slate-800 h-screen fixed left-0 top-0 z-10" style={{ background: '#0f172a' }}>
+            <div className="h-16 flex items-center justify-center border-b border-slate-800/50">
+                <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                        <Send size={18} className="text-white" />
+                    </div>
+                    SendAdmin
+                </h1>
             </div>
             <Menu
                 mode="inline"
+                theme="dark"
                 selectedKeys={[activeKey]}
-                style={{ borderRight: 0, paddingTop: 16 }}
+                style={{ background: 'transparent', borderRight: 0, paddingTop: 24, paddingLeft: 12, paddingRight: 12 }}
                 items={menuItems}
                 onClick={({ key }) => router.push(key)}
+                className="custom-dark-menu"
             />
         </Sider>
     );
