@@ -35,6 +35,12 @@ export const translations = {
             reports: 'Reports',
             settings: 'Settings',
         },
+        header: {
+            workspace: 'Workspace',
+            defaultWorkspace: 'Default',
+            profile: 'Profile',
+            logout: 'Logout',
+        },
         dashboard: {
             title: 'Overview',
             subtitle: 'Welcome back, here\'s what\'s happening today.',
@@ -259,8 +265,8 @@ export const translations = {
             time: '时间',
         },
         nav: {
-            dashboard: '概览',
-            contacts: '通讯录',
+            dashboard: '数据概览',
+            contacts: '联系人管理',
             connectors: '渠道连接',
             tags: '标签管理',
             campaigns: '群发活动',
@@ -467,6 +473,12 @@ export const translations = {
                 channel: '渠道',
                 status: '状态',
             }
+        },
+        header: {
+            workspace: '工作空间',
+            defaultWorkspace: '默认',
+            profile: '个人资料',
+            logout: '退出登录',
         }
     }
 };

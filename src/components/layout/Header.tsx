@@ -14,8 +14,8 @@ const Header = () => {
     const { locale, setLocale, t } = useI18n();
 
     const userMenu = [
-        { key: 'profile', label: 'Profile' },
-        { key: 'logout', label: 'Logout', danger: true },
+        { key: 'profile', label: t.header.profile },
+        { key: 'logout', label: t.header.logout, danger: true },
     ];
 
     const langMenu = [
@@ -26,8 +26,9 @@ const Header = () => {
     return (
         <AntHeader style={{ background: token.colorBgContainer, padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} className="border-b border-gray-100 sticky top-0 z-10">
             <div>
-                {/* Breadcrumb could go here */}
-                <span className="text-gray-500 text-sm">Workspace / Default</span>
+                <span className="text-gray-500 text-sm font-medium">
+                    {t.header.workspace} <span className="mx-1 text-gray-300">/</span> {t.header.defaultWorkspace}
+                </span>
             </div>
 
             <div className="flex items-center gap-4">
@@ -46,7 +47,7 @@ const Header = () => {
                 <Dropdown menu={{ items: userMenu }}>
                     <div className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 py-1 px-2 rounded-lg transition-colors">
                         <Avatar size="small" icon={<UserIcon size={16} />} style={{ backgroundColor: token.colorPrimary }} />
-                        <span className="text-sm font-medium text-gray-700">{user?.name || 'User'}</span>
+                        <span className="text-sm font-medium text-gray-700">{user?.name || (locale === 'cn' ? '管理员' : 'Admin')}</span>
                     </div>
                 </Dropdown>
             </div>
