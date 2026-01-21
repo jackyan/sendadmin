@@ -59,16 +59,16 @@ const CampaignWizard = () => {
                             <Input placeholder="e.g. Q1 Webinar Invite" size="large" />
                         </Form.Item>
                         <Form.Item name="tags" label={t.campaigns.wizard.target} rules={[{ required: true }]}>
-                            <Select mode="multiple" placeholder="Select tags" options={[{ label: 'VIP (500 users)', value: 'vip' }, { label: 'Leads (1200 users)', value: 'leads' }]} size="large" />
+                            <Select mode="multiple" placeholder={t.campaigns.wizard.selectTags} options={[{ label: 'VIP (500 users)', value: 'vip' }, { label: 'Leads (1200 users)', value: 'leads' }]} size="large" />
                         </Form.Item>
-                        <Alert message="Estimated Audience Size: 1,700 contacts" type="info" showIcon />
+                        <Alert message={t.campaigns.wizard.estAudience} type="info" showIcon />
                     </div>
                 )}
 
                 {/* Step 2: Channel */}
                 {current === 1 && (
                     <div className="max-w-2xl mx-auto space-y-6">
-                        <Form.Item name="channel" label="Select Channel" rules={[{ required: true }]}>
+                        <Form.Item name="channel" label={t.campaigns.wizard.selectChannel} rules={[{ required: true }]}>
                             <Radio.Group className="w-full grid grid-cols-2 gap-4">
                                 {MOCK_CHANNELS.map(ch => (
                                     <Radio.Button key={ch.id} value={ch.type} className="h-24 flex items-center justify-center">
@@ -87,12 +87,12 @@ const CampaignWizard = () => {
                 {current === 2 && (
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div>
-                            <Form.Item name="template" label="Message Template" rules={[{ required: true }]}>
+                            <Form.Item name="template" label={t.campaigns.wizard.template} rules={[{ required: true }]}>
                                 <Select placeholder="Select a pre-approved template" options={MOCK_TEMPLATES.map(t => ({ label: t.name, value: t.id }))} />
                             </Form.Item>
-                            <Form.Item name="custom_vars" label="Variables">
-                                <Input placeholder="Enter value for {{name}}" disabled />
-                                <div className="text-xs text-gray-400 mt-1">Variables are auto-filled from contact data.</div>
+                            <Form.Item name="custom_vars" label={t.campaigns.wizard.variables}>
+                                <Input placeholder={t.campaigns.wizard.variablePlaceholder} disabled />
+                                <div className="text-xs text-gray-400 mt-1">{t.campaigns.wizard.variableHelp}</div>
                             </Form.Item>
                         </div>
                         <div className="bg-gray-100 p-4 rounded-xl border border-gray-200">
@@ -107,12 +107,12 @@ const CampaignWizard = () => {
                 {/* Step 4: Link */}
                 {current === 3 && (
                     <div className="max-w-2xl mx-auto space-y-6">
-                        <Form.Item name="link_target" label="Interactive Landing Page (Question Set)" rules={[{ required: true }]}>
-                            <Select placeholder="Select Question Set" options={[{ label: 'Q1 Survey', value: 'q1' }, { label: 'Product Feedback', value: 'q2' }]} />
+                        <Form.Item name="link_target" label={t.campaigns.wizard.landing} rules={[{ required: true }]}>
+                            <Select placeholder={t.campaigns.wizard.selectLink} options={[{ label: 'Q1 Survey', value: 'q1' }, { label: 'Product Feedback', value: 'q2' }]} />
                         </Form.Item>
                         <Alert
-                            message="Unique Links Generated"
-                            description="System will generate 1,700 unique short links. Clicks are tracked per user."
+                            message={t.campaigns.wizard.linkSuccess}
+                            description={t.campaigns.wizard.linkDesc}
                             type="success"
                             showIcon
                         />
