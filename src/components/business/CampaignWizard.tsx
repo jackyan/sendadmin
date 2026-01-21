@@ -56,10 +56,10 @@ const CampaignWizard = () => {
                 {current === 0 && (
                     <div className="max-w-2xl mx-auto space-y-6">
                         <Form.Item name="name" label={t.campaigns.wizard.name} rules={[{ required: true }]}>
-                            <Input placeholder="e.g. Q1 Webinar Invite" size="large" />
+                            <Input placeholder={t.campaigns.wizard.variablePlaceholder} size="large" />
                         </Form.Item>
                         <Form.Item name="tags" label={t.campaigns.wizard.target} rules={[{ required: true }]}>
-                            <Select mode="multiple" placeholder={t.campaigns.wizard.selectTags} options={[{ label: 'VIP (500 users)', value: 'vip' }, { label: 'Leads (1200 users)', value: 'leads' }]} size="large" />
+                            <Select mode="multiple" placeholder={t.campaigns.wizard.selectTags} options={[{ label: `VIP (500 ${t.nav.contacts})`, value: 'vip' }, { label: `Leads (1200 ${t.nav.contacts})`, value: 'leads' }]} size="large" />
                         </Form.Item>
                         <Alert message={t.campaigns.wizard.estAudience} type="info" showIcon />
                     </div>
