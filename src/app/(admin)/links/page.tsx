@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Button, Table, Tag, Space, Input, Modal, Form, message } from 'antd';
-import { Plus, Search, Copy, ExternalLink, Link as LinkIcon } from 'lucide-react';
+import { Plus, Search, Copy, ExternalLink, Link as LinkIcon, Eye } from 'lucide-react';
 import { MOCK_LINKS } from '@/lib/mock-data';
 import { useI18n } from '@/lib/i18n/I18nContext';
 
@@ -76,10 +76,13 @@ export default function LinksPage() {
                 <Space>
                     <Button
                         size="small"
-                        icon={<ExternalLink size={14} />}
+                        type="text"
+                        icon={<Eye size={14} />}
+                        className="text-indigo-600 flex items-center hover:bg-indigo-50"
                         onClick={() => window.open(`/s/demo`, '_blank')}
-                        title="Preview"
-                    />
+                    >
+                        {t.links.table.preview}
+                    </Button>
                 </Space>
             )
         }

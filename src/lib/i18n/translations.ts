@@ -146,6 +146,7 @@ export const translations = {
                 created: 'Created At',
                 source: 'Source',
                 dynamic: '[Dynamic Unique Links]',
+                preview: 'Preview',
             },
             sources: {
                 manual: 'Manual',
@@ -270,6 +271,7 @@ export const translations = {
                 created: '创建时间',
                 source: '来源',
                 dynamic: '[动态唯一链接]',
+                preview: '预览',
             },
             sources: {
                 manual: '手动创建',
