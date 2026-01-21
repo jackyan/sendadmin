@@ -77,6 +77,7 @@ export const translations = {
             },
             wizard: {
                 name: 'Campaign Name',
+                namePlaceholder: 'Enter campaign name',
                 subtitle: 'Follow the steps to launch a new message blast.',
                 target: 'Target Audience',
                 selectTags: 'Select tags',
@@ -297,6 +298,7 @@ export const translations = {
             },
             wizard: {
                 name: '活动名称',
+                namePlaceholder: '请输入活动名称',
                 subtitle: '按照步骤发起新的群发消息活动。',
                 target: '目标受众',
                 selectTags: '选择标签',
