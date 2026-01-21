@@ -26,6 +26,7 @@ const Sidebar = () => {
     const menuItems = [
         { key: '/dashboard', icon: <LayoutDashboard size={18} />, label: t.nav.dashboard },
         { key: '/contacts', icon: <Users size={18} />, label: t.nav.contacts },
+        { key: '/tags', icon: <Users size={18} />, label: t.nav.tags },
         { key: '/connectors', icon: <Layers size={18} />, label: t.nav.connectors },
         { key: '/templates', icon: <MessageSquare size={18} />, label: t.nav.templates },
         { key: '/campaigns', icon: <Send size={18} />, label: t.nav.campaigns },

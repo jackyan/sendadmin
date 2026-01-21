@@ -72,18 +72,18 @@ export default function CampaignDetailsPage() {
                             {status === 'processing' && (
                                 <Space size="small">
                                     {!isPaused ? (
-                                        <Button size="small" icon={<Pause size={14} />} onClick={handlePause}>Pause</Button>
+                                        <Button size="small" icon={<Pause size={14} />} onClick={handlePause}>{t.campaignDetails.controls.pause}</Button>
                                     ) : (
-                                        <Button size="small" icon={<Play size={14} />} type="primary" onClick={handleResume}>Resume</Button>
+                                        <Button size="small" icon={<Play size={14} />} type="primary" onClick={handleResume}>{t.campaignDetails.controls.resume}</Button>
                                     )}
-                                    <Button size="small" danger icon={<Square size={14} />} onClick={handleStop}>Stop</Button>
+                                    <Button size="small" danger icon={<Square size={14} />} onClick={handleStop}>{t.campaignDetails.controls.stop}</Button>
                                 </Space>
                             )}
                         </div>
                         <p className="text-gray-500">ID: {id} • Created on Jan 21, 2026</p>
                     </div>
                 </div>
-                {status === 'processing' && <Button loading>{t.common.loading}</Button>}
+                {status === 'processing' && !isPaused && <Button loading>{t.campaignDetails.controls.sending}</Button>}
                 {status === 'completed' && <Button icon={<Download size={16} />}>{t.common.export}</Button>}
             </div>
 

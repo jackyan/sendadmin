@@ -188,10 +188,10 @@ const CampaignWizard = () => {
             </Form>
 
             <div className="mt-8 flex justify-end gap-3 pt-6 border-t border-gray-100">
-                {current > 0 && <Button onClick={handlePrev}>{t.common.back}</Button>}
+                {current > 0 && <Button size="large" onClick={handlePrev}>{t.common.back}</Button>}
 
                 {current < steps.length - 1 && (
-                    <Button type="primary" onClick={handleNext}>{t.common.next}</Button>
+                    <Button size="large" type="primary" onClick={handleNext}>{t.common.next}</Button>
                 )}
 
                 {current === steps.length - 1 && (

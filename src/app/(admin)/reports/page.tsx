@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Card, Table, Tabs, DatePicker, Button, Tag, Space } from 'antd';
-import { Download, Filter } from 'lucide-react';
+import { Card, Table, Tabs, DatePicker, Button, Tag, Space, Tooltip } from 'antd';
+import { Download, Filter, AlertCircle } from 'lucide-react';
 
 import { useI18n } from '@/lib/i18n/I18nContext';
 
@@ -56,7 +56,14 @@ export default function ReportsPage() {
                         },
                         {
                             key: '2',
-                            label: t.reports.tabs.webhook,
+                            label: (
+                                <Tooltip title={t.reports.tabs.webhookHelp}>
+                                    <Space>
+                                        {t.reports.tabs.webhook}
+                                        <AlertCircle size={14} className="text-gray-400" />
+                                    </Space>
+                                </Tooltip>
+                            ),
                             children: (
                                 <div className="p-4 flex justify-center items-center h-48 text-gray-400">
                                     No webhook events in the selected range.

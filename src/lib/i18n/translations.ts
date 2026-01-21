@@ -29,6 +29,7 @@ export const translations = {
             contacts: 'Contacts',
             connectors: 'Connectors',
             campaigns: 'Campaigns',
+            tags: 'Tags',
             templates: 'Templates',
             links: 'Links',
             reports: 'Reports',
@@ -196,6 +197,22 @@ export const translations = {
                 completed: 'COMPLETED',
                 draft: 'DRAFT',
                 failed: 'FAILED',
+                paused: 'PAUSED',
+            },
+            controls: {
+                pause: 'Pause',
+                resume: 'Resume',
+                stop: 'Stop',
+                sending: 'Sending...',
+            }
+        },
+        tags: {
+            title: 'Tag Management',
+            subtitle: 'Organize your contacts with tags.',
+            create: 'New Tag',
+            table: {
+                name: 'Tag Name',
+                count: 'Contacts Count',
             }
         },
         reports: {
@@ -204,6 +221,7 @@ export const translations = {
             tabs: {
                 sendLogs: 'Send Logs',
                 webhook: 'Webhook Events',
+                webhookHelp: 'Real-time callback events from channel providers (e.g. Delivered, Read, Failed).',
             },
             table: {
                 time: 'Time',
@@ -241,6 +259,7 @@ export const translations = {
             dashboard: '概览',
             contacts: '通讯录',
             connectors: '渠道连接',
+            tags: '标签管理',
             campaigns: '群发活动',
             templates: '话术模板',
             links: '短链管理',
@@ -409,6 +428,22 @@ export const translations = {
                 completed: '已完成',
                 draft: '草稿',
                 failed: '失败',
+                paused: '已暂停',
+            },
+            controls: {
+                pause: '暂停',
+                resume: '继续',
+                stop: '停止',
+                sending: '发送中...',
+            }
+        },
+        tags: {
+            title: '标签管理',
+            subtitle: '使用标签来组织和管理您的联系人。',
+            create: '新建标签',
+            table: {
+                name: '标签名称',
+                count: '联系人数量',
             }
         },
         reports: {
@@ -417,6 +452,7 @@ export const translations = {
             tabs: {
                 sendLogs: '发送日志',
                 webhook: 'Webhook 事件',
+                webhookHelp: '来自渠道提供商的实时回调事件（如：已送达、已读、失败回调）。',
             },
             table: {
                 time: '时间',
