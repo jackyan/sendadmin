@@ -3,12 +3,20 @@
 import React from 'react';
 import { Row, Col, Card, Table, Tag, Progress, Button, Space } from 'antd';
 import { Send, CheckCircle, MousePointer, Users, RefreshCw } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import StatsCard from '@/components/dashboard/StatsCard';
 import { MOCK_CAMPAIGNS } from '@/lib/mock-data';
 import { useI18n } from '@/lib/i18n/I18nContext';
 
 export default function DashboardPage() {
     const { t } = useI18n();
+    const router = useRouter();
+    const [loading, setLoading] = React.useState(false);
+
+    const handleRefresh = () => {
+        setLoading(true);
+        setTimeout(() => setLoading(false), 1000);
+    };
 
     const columns = [
         {
@@ -50,8 +58,8 @@ export default function DashboardPage() {
                     <p className="text-gray-500">{t.dashboard.subtitle}</p>
                 </div>
                 <div className="flex gap-2">
-                    <Button icon={<RefreshCw size={16} />}>{t.common.refresh}</Button>
-                    <Button type="primary" icon={<Send size={16} />}>{t.campaigns.create}</Button>
+                    <Button icon={<RefreshCw size={16} />} loading={loading} onClick={handleRefresh}>{t.common.refresh}</Button>
+                    <Button type="primary" icon={<Send size={16} />} onClick={() => router.push('/campaigns/create')}>{t.campaigns.create}</Button>
                 </div>
             </div>
 

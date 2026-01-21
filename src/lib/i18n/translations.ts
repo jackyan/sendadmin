@@ -96,12 +96,23 @@ export const translations = {
                 variables: 'Variables',
                 variableHelp: 'Variables are auto-filled from contact data.',
                 variablePlaceholder: 'Enter value for {{name}}',
-                landing: 'Interactive Landing Page (Question Set)',
+                landing: 'Link Destination Content (Question Set)',
                 selectLink: 'Select Question Set',
                 linkSuccess: 'Unique Links Generated',
                 linkDesc: 'System will generate 1,700 unique short links. Clicks are tracked per user.',
                 ready: 'Ready to Send!',
                 success: 'Campaign Created',
+                review: {
+                    title: 'Ready to Send!',
+                    subtitle: 'You are about to send messages to {count} contacts.',
+                    campaignName: 'Campaign Name',
+                    channel: 'Channel',
+                    sendNow: 'Send Now',
+                    schedule: 'Schedule Send',
+                    scheduleTitle: 'Schedule Sending Time',
+                    selectTime: 'Select Time',
+                    confirmSchedule: 'Confirm Schedule',
+                }
             }
         },
         connectors: {
@@ -340,12 +351,23 @@ export const translations = {
                 variables: '变量',
                 variableHelp: '变量将根据联系人数据自动填充。',
                 variablePlaceholder: '输入 {{name}} 的值',
-                landing: '交互式落地页 (问答套件)',
+                landing: '链接跳转目标 (问答套件)',
                 selectLink: '选择问答套件',
                 linkSuccess: '已生成唯一链接',
                 linkDesc: '系统将生成 1,700 个唯一短链。点击将按用户进行追踪。',
                 ready: '准备发送！',
                 success: '活动已创建',
+                review: {
+                    title: '准备发送！',
+                    subtitle: '即将向 {count} 位联系人发送消息。',
+                    campaignName: '活动名称',
+                    channel: '渠道',
+                    sendNow: '立即发送',
+                    schedule: '定时发送',
+                    scheduleTitle: '设置发送时间',
+                    selectTime: '选择时间',
+                    confirmSchedule: '确认定时',
+                }
             }
         },
         connectors: {

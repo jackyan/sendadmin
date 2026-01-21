@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Card, Progress, Row, Col, Tabs, Table, Tag, Button, Statistic } from 'antd';
-import { ArrowLeft, RefreshCw, AlertCircle, Download, CheckCircle, Smartphone } from 'lucide-react';
+import { Card, Progress, Row, Col, Tabs, Table, Tag, Button, Statistic, Space, Tooltip } from 'antd';
+import { ArrowLeft, RefreshCw, AlertCircle, Download, CheckCircle, Smartphone, Play, Pause, Square } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import StatsCard from '@/components/dashboard/StatsCard';
@@ -14,9 +14,11 @@ export default function CampaignDetailsPage() {
     const [percent, setPercent] = useState(45);
     const [status, setStatus] = useState('processing');
 
+    const [isPaused, setIsPaused] = useState(false);
+
     // Simulation of progress
     useEffect(() => {
-        if (status !== 'processing') return;
+        if (status !== 'processing' || isPaused) return;
 
         const timer = setInterval(() => {
             setPercent(prev => {
@@ -30,7 +32,18 @@ export default function CampaignDetailsPage() {
         }, 1000);
 
         return () => clearInterval(timer);
-    }, [status]);
+    }, [status, isPaused]);
+
+    const handlePause = () => setIsPaused(true);
+    const handleResume = () => setIsPaused(false);
+    const handleStop = () => {
+        setIsPaused(true);
+        setStatus('failed');
+    };
+
+    const totalAudience = 1000;
+    const failureCount = status === 'completed' ? 42 : Math.floor((percent / 100) * 42);
+    const successSent = Math.floor((totalAudience * (percent / 100)) - failureCount);
 
     const failureData = [
         { key: '1', phone: '+1 555 0192', reason: 'Not on WhatsApp', time: '10:42 AM' },
@@ -55,7 +68,17 @@ export default function CampaignDetailsPage() {
                     <div>
                         <div className="flex items-center gap-2">
                             <h2 className="text-2xl font-bold text-gray-800">Q1 Webinar Invite</h2>
-                            <Tag color={status === 'completed' ? 'green' : 'blue'}>{statusLabel}</Tag>
+                            <Tag color={status === 'completed' ? 'green' : status === 'processing' ? 'blue' : 'red'}>{statusLabel}</Tag>
+                            {status === 'processing' && (
+                                <Space size="small">
+                                    {!isPaused ? (
+                                        <Button size="small" icon={<Pause size={14} />} onClick={handlePause}>Pause</Button>
+                                    ) : (
+                                        <Button size="small" icon={<Play size={14} />} type="primary" onClick={handleResume}>Resume</Button>
+                                    )}
+                                    <Button size="small" danger icon={<Square size={14} />} onClick={handleStop}>Stop</Button>
+                                </Space>
+                            )}
                         </div>
                         <p className="text-gray-500">ID: {id} • Created on Jan 21, 2026</p>
                     </div>
@@ -75,13 +98,13 @@ export default function CampaignDetailsPage() {
 
                 <Row gutter={[24, 24]}>
                     <Col xs={24} sm={8}>
-                        <Statistic title={t.campaignDetails.totalAudience} value={1000} prefix={<Smartphone size={16} className="text-gray-400 mr-2" />} />
+                        <Statistic title={t.campaignDetails.totalAudience} value={totalAudience} prefix={<Smartphone size={16} className="text-gray-400 mr-2" />} />
                     </Col>
                     <Col xs={24} sm={8}>
-                        <Statistic title={t.campaignDetails.successSent} value={Math.floor(1000 * (percent / 100))} valueStyle={{ color: '#10B981' }} prefix={<CheckCircle size={16} className="text-green-500 mr-2" />} />
+                        <Statistic title={t.campaignDetails.successSent} value={successSent} valueStyle={{ color: '#10B981' }} prefix={<CheckCircle size={16} className="text-green-500 mr-2" />} />
                     </Col>
                     <Col xs={24} sm={8}>
-                        <Statistic title={t.campaignDetails.failures} value={status === 'completed' ? 42 : Math.floor(percent / 3)} valueStyle={{ color: '#EF4444' }} prefix={<AlertCircle size={16} className="text-red-500 mr-2" />} />
+                        <Statistic title={t.campaignDetails.failures} value={failureCount} valueStyle={{ color: '#EF4444' }} prefix={<AlertCircle size={16} className="text-red-500 mr-2" />} />
                     </Col>
                 </Row>
             </Card>

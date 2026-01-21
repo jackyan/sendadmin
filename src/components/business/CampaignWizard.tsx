@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Steps, Card, Button, Form, Select, Input, Radio, Alert, Result, Divider, Segmented, Upload } from 'antd';
+import { Steps, Card, Button, Form, Select, Input, Radio, Alert, Result, Divider, Segmented, Upload, Modal, DatePicker } from 'antd';
 import { User, MessageSquare, Link as LinkIcon, Send, CheckCircle, Smartphone, UploadCloud } from 'lucide-react';
 
 const { Dragger } = Upload;
@@ -32,13 +32,24 @@ const CampaignWizard = () => {
 
     const handlePrev = () => setCurrent(current - 1);
 
-    const handleSend = () => {
+    const [scheduleModalOpen, setScheduleModalOpen] = useState(false);
+
+    const handleSendNow = () => {
         setSending(true);
         // Simulate API call
         setTimeout(() => {
             setSending(false);
-            router.push('/campaigns/cp1'); // Redirect to mock detail
+            router.push('/campaigns/cp1');
         }, 2000);
+    };
+
+    const handleScheduleConfirm = () => {
+        setScheduleModalOpen(false);
+        setSending(true);
+        setTimeout(() => {
+            setSending(false);
+            router.push('/campaigns/cp1');
+        }, 1500);
     };
 
     const steps = [
@@ -157,17 +168,17 @@ const CampaignWizard = () => {
                     <div className="max-w-2xl mx-auto text-center space-y-6">
                         <Result
                             icon={<CheckCircle className="text-indigo-600" size={64} />}
-                            title="Ready to Send!"
-                            subTitle="You are about to send messages to 1,700 contacts via WhatsApp."
+                            title={t.campaigns.wizard.review.title}
+                            subTitle={t.campaigns.wizard.review.subtitle.replace('{count}', '1,700')}
                         />
                         <Divider />
                         <div className="grid grid-cols-2 text-left gap-4 bg-gray-50 p-6 rounded-lg">
                             <div>
-                                <div className="text-gray-500 text-sm">Campaign Name</div>
+                                <div className="text-gray-500 text-sm">{t.campaigns.wizard.review.campaignName}</div>
                                 <div className="font-medium">{form.getFieldValue('name')}</div>
                             </div>
                             <div>
-                                <div className="text-gray-500 text-sm">Channel</div>
+                                <div className="text-gray-500 text-sm">{t.campaigns.wizard.review.channel}</div>
                                 <div className="font-medium capitalize">{form.getFieldValue('channel')}</div>
                             </div>
                         </div>
@@ -178,9 +189,40 @@ const CampaignWizard = () => {
 
             <div className="mt-8 flex justify-end gap-3 pt-6 border-t border-gray-100">
                 {current > 0 && <Button onClick={handlePrev}>{t.common.back}</Button>}
-                {current < steps.length - 1 && <Button type="primary" onClick={handleNext}>{t.common.next}</Button>}
-                {current === steps.length - 1 && <Button type="primary" loading={sending} onClick={handleSend} className="bg-green-600 hover:bg-green-700">{t.campaigns.wizard.ready}</Button>}
+
+                {current < steps.length - 1 && (
+                    <Button type="primary" onClick={handleNext}>{t.common.next}</Button>
+                )}
+
+                {current === steps.length - 1 && (
+                    <>
+                        <Button size="large" onClick={() => setScheduleModalOpen(true)}>
+                            {t.campaigns.wizard.review.schedule}
+                        </Button>
+                        <Button
+                            type="primary"
+                            size="large"
+                            loading={sending}
+                            onClick={handleSendNow}
+                            className="bg-green-600 hover:bg-green-700"
+                        >
+                            {t.campaigns.wizard.review.sendNow}
+                        </Button>
+                    </>
+                )}
             </div>
+
+            <Modal
+                title={t.campaigns.wizard.review.scheduleTitle}
+                open={scheduleModalOpen}
+                onCancel={() => setScheduleModalOpen(false)}
+                onOk={handleScheduleConfirm}
+                okText={t.campaigns.wizard.review.confirmSchedule}
+            >
+                <div className="py-8 text-center">
+                    <DatePicker showTime size="large" className="w-full" placeholder={t.campaigns.wizard.review.selectTime} />
+                </div>
+            </Modal>
         </Card>
     );
 };
