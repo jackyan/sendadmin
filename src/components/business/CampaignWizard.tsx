@@ -91,12 +91,12 @@ const CampaignWizard = () => {
                             </Form.Item>
                         ) : (
                             <Form.Item name="file" rules={[{ required: true }]}>
-                                <Dragger style={{ background: '#fff' }}>
+                                <Dragger style={{ background: '#e0e7ff30', border: '2px dashed #c7d2fe', borderRadius: '12px' }}>
                                     <p className="ant-upload-drag-icon">
-                                        <UploadCloud />
+                                        <UploadCloud className="text-indigo-400" />
                                     </p>
-                                    <p className="ant-upload-text">{t.campaigns.wizard.upload.drag}</p>
-                                    <p className="ant-upload-hint">{t.campaigns.wizard.upload.hint}</p>
+                                    <p className="ant-upload-text text-slate-600 font-medium">{t.campaigns.wizard.upload.drag}</p>
+                                    <p className="ant-upload-hint text-slate-400">{t.campaigns.wizard.upload.hint}</p>
                                 </Dragger>
                             </Form.Item>
                         )}
@@ -115,10 +115,13 @@ const CampaignWizard = () => {
                         <Form.Item name="channel" label={t.campaigns.wizard.selectChannel} rules={[{ required: true }]}>
                             <Radio.Group className="w-full grid grid-cols-2 gap-4">
                                 {MOCK_CHANNELS.map(ch => (
-                                    <Radio.Button key={ch.id} value={ch.type} className="h-24 flex items-center justify-center">
+                                    <Radio.Button key={ch.id} value={ch.type} className="h-28 flex items-center justify-center border-none shadow-sm rounded-xl bg-white hover:bg-indigo-50 hover:text-indigo-600 transition-all">
                                         <div className="text-center">
-                                            <div className="font-bold capitalize">{ch.name}</div>
-                                            <div className="text-xs text-gray-500">{ch.status}</div>
+                                            <div className="font-bold capitalize text-lg mb-1">{ch.name}</div>
+                                            <div className="text-xs text-slate-400 flex items-center justify-center gap-1">
+                                                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                                {ch.status}
+                                            </div>
                                         </div>
                                     </Radio.Button>
                                 ))}

@@ -13,8 +13,28 @@ export default function CampaignsPage() {
 
     const columns = [
         { title: t.campaigns.wizard.name, dataIndex: 'name', key: 'name', render: (t: string) => <span className="font-medium">{t}</span> },
-        { title: t.campaigns.steps.channel, dataIndex: 'channel', key: 'channel', render: (t: string) => <Tag>{t.toUpperCase()}</Tag> },
-        { title: t.common.status, dataIndex: 'status', key: 'status', render: (s: string) => <Tag color={s === 'completed' ? 'green' : s === 'processing' ? 'blue' : 'default'}>{s.toUpperCase()}</Tag> },
+        {
+            title: t.campaigns.steps.channel, dataIndex: 'channel', key: 'channel', render: (t: string) => (
+                <span className={`px-2.5 py-1 rounded-md text-xs font-semibold ${t === 'whatsapp' ? 'bg-green-50 text-green-600' : 'bg-blue-50 text-blue-600'}`}>
+                    {t.toUpperCase()}
+                </span>
+            )
+        },
+        {
+            title: t.common.status, dataIndex: 'status', key: 'status', render: (s: string) => {
+                const colors = {
+                    completed: 'bg-emerald-50 text-emerald-600',
+                    processing: 'bg-blue-50 text-blue-600',
+                    draft: 'bg-slate-100 text-slate-600',
+                    failed: 'bg-rose-50 text-rose-600'
+                };
+                return (
+                    <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${(colors as any)[s] || 'bg-slate-100'}`}>
+                        {s.toUpperCase()}
+                    </span>
+                );
+            }
+        },
         {
             title: t.common.actions,
             key: 'action',
