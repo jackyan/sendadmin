@@ -80,6 +80,15 @@ export const translations = {
                 namePlaceholder: 'Enter campaign name',
                 subtitle: 'Follow the steps to launch a new message blast.',
                 target: 'Target Audience',
+                audienceType: {
+                    tags: 'Filter by Tags',
+                    import: 'Import List',
+                },
+                upload: {
+                    title: 'Upload Contact List',
+                    drag: 'Click or drag file to upload',
+                    hint: 'Supports .xlsx, .csv formats',
+                },
                 selectTags: 'Select tags',
                 estAudience: 'Estimated Audience Size: 1,700 contacts',
                 selectChannel: 'Select Channel',
@@ -301,6 +310,15 @@ export const translations = {
                 namePlaceholder: '请输入活动名称',
                 subtitle: '按照步骤发起新的群发消息活动。',
                 target: '目标受众',
+                audienceType: {
+                    tags: '按标签筛选',
+                    import: '导入名单',
+                },
+                upload: {
+                    title: '上传客户名单',
+                    drag: '点击或拖拽文件到此处',
+                    hint: '支持 .xlsx, .csv 格式',
+                },
                 selectTags: '选择标签',
                 estAudience: '预计受众人数：1,700 联系人',
                 selectChannel: '选择渠道',

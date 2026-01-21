@@ -1,8 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Steps, Card, Button, Form, Select, Input, Radio, Alert, Result, Divider } from 'antd';
-import { User, MessageSquare, Link, Send, CheckCircle, Smartphone } from 'lucide-react';
+import { Steps, Card, Button, Form, Select, Input, Radio, Alert, Result, Divider, Segmented, Upload } from 'antd';
+import { User, MessageSquare, Link as LinkIcon, Send, CheckCircle, Smartphone, UploadCloud } from 'lucide-react';
+
+const { Dragger } = Upload;
 import { useRouter } from 'next/navigation';
 import { useAppStore } from '@/lib/store';
 import { MOCK_CHANNELS, MOCK_TEMPLATES } from '@/lib/mock-data';
@@ -15,6 +17,7 @@ const CampaignWizard = () => {
     const [current, setCurrent] = useState(0);
     const [form] = Form.useForm();
     const [sending, setSending] = useState(false);
+    const [audienceType, setAudienceType] = useState<'tags' | 'import'>('tags');
     const { user } = useAppStore();
     const { t } = useI18n();
 
@@ -42,7 +45,7 @@ const CampaignWizard = () => {
         { title: t.campaigns.steps.audience, icon: <User /> },
         { title: t.campaigns.steps.channel, icon: <Smartphone /> },
         { title: t.campaigns.steps.content, icon: <MessageSquare /> },
-        { title: t.campaigns.steps.link, icon: <Link /> },
+        { title: t.campaigns.steps.link, icon: <LinkIcon /> },
         { title: t.campaigns.steps.review, icon: <Send /> },
     ];
 
@@ -58,10 +61,40 @@ const CampaignWizard = () => {
                         <Form.Item name="name" label={t.campaigns.wizard.name} rules={[{ required: true }]}>
                             <Input placeholder={t.campaigns.wizard.namePlaceholder} size="large" />
                         </Form.Item>
-                        <Form.Item name="tags" label={t.campaigns.wizard.target} rules={[{ required: true }]}>
-                            <Select mode="multiple" placeholder={t.campaigns.wizard.selectTags} options={[{ label: `VIP (500 ${t.nav.contacts})`, value: 'vip' }, { label: `Leads (1200 ${t.nav.contacts})`, value: 'leads' }]} size="large" />
+                        <Form.Item name="audienceType" label={t.campaigns.wizard.target} initialValue="tags">
+                            <Segmented
+                                options={[
+                                    { label: t.campaigns.wizard.audienceType.tags, value: 'tags' },
+                                    { label: t.campaigns.wizard.audienceType.import, value: 'import' }
+                                ]}
+                                value={audienceType}
+                                onChange={(val) => setAudienceType(val as 'tags' | 'import')}
+                                block
+                                className="mb-4"
+                            />
                         </Form.Item>
-                        <Alert message={t.campaigns.wizard.estAudience} type="info" showIcon />
+
+                        {audienceType === 'tags' ? (
+                            <Form.Item name="tags" rules={[{ required: true }]}>
+                                <Select mode="multiple" placeholder={t.campaigns.wizard.selectTags} options={[{ label: `VIP (500 ${t.nav.contacts})`, value: 'vip' }, { label: `Leads (1200 ${t.nav.contacts})`, value: 'leads' }]} size="large" />
+                            </Form.Item>
+                        ) : (
+                            <Form.Item name="file" rules={[{ required: true }]}>
+                                <Dragger style={{ background: '#fff' }}>
+                                    <p className="ant-upload-drag-icon">
+                                        <UploadCloud />
+                                    </p>
+                                    <p className="ant-upload-text">{t.campaigns.wizard.upload.drag}</p>
+                                    <p className="ant-upload-hint">{t.campaigns.wizard.upload.hint}</p>
+                                </Dragger>
+                            </Form.Item>
+                        )}
+
+                        <Alert
+                            message={audienceType === 'tags' ? t.campaigns.wizard.estAudience : `${t.common.status}: 500 (${t.campaigns.wizard.audienceType.import})`}
+                            type="info"
+                            showIcon
+                        />
                     </div>
                 )}
 
