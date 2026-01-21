@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Modal, Upload, Steps, Button, Select, Table, message } from 'antd';
+import { Modal, Upload, Steps, Button, Select, Table, message, Tag } from 'antd';
 import { useI18n } from '@/lib/i18n/I18nContext';
-import { InboxOutlined, FileExcelOutlined } from '@ant-design/icons';
+import { InboxOutlined, FileExcelOutlined, TagsOutlined } from '@ant-design/icons';
 import { UploadFile } from 'antd/es/upload/interface';
 
 interface ContactImportModalProps {
@@ -20,6 +20,7 @@ const ContactImportModal: React.FC<ContactImportModalProps> = ({ open, onCancel,
     const [current, setCurrent] = useState(0);
     const [fileList, setFileList] = useState<UploadFile[]>([]);
     const [mapping, setMapping] = useState({ name: 'name', phone: 'phone', email: 'email' });
+    const [tags, setTags] = useState<string[]>([]);
     const [uploading, setUploading] = useState(false);
 
     const handleNext = () => setCurrent(current + 1);
@@ -78,12 +79,36 @@ const ContactImportModal: React.FC<ContactImportModalProps> = ({ open, onCancel,
         {
             title: t.importModal.step3,
             content: (
+                <div className="py-8 space-y-4">
+                    <p className="text-gray-500 mb-4">{t.importModal.tagTitle}</p>
+                    <div className="bg-gray-50 p-6 rounded-lg border border-gray-100 flex flex-col items-center justify-center space-y-4">
+                        <TagsOutlined style={{ fontSize: 24, color: '#6366f1' }} />
+                        <Select
+                            mode="tags"
+                            style={{ width: '100%', maxWidth: 300 }}
+                            placeholder={t.importModal.tagPlaceholder}
+                            value={tags}
+                            onChange={setTags}
+                            options={[{ label: 'VIP', value: 'VIP' }, { label: 'New Lead', value: 'New Lead' }]}
+                        />
+                    </div>
+                </div>
+            )
+        },
+        {
+            title: t.importModal.step4,
+            content: (
                 <div className="py-8">
                     <div className="bg-gray-50 p-4 rounded border border-gray-200 text-center">
                         <FileExcelOutlined style={{ fontSize: 32, color: '#10B981' }} />
                         <h3 className="mt-2 font-medium">{t.importModal.ready}</h3>
                         <p className="text-gray-500">File: {fileList[0]?.name}</p>
                         <p className="text-gray-500">{t.importModal.rowEst}: 50</p>
+                        {tags.length > 0 && (
+                            <div className="mt-2">
+                                {tags.map(tag => <Tag key={tag} color="blue">{tag}</Tag>)}
+                            </div>
+                        )}
                     </div>
                 </div>
             ),
