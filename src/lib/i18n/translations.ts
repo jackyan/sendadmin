@@ -230,7 +230,7 @@ export const translations = {
             dashboard: '概览',
             contacts: '通讯录',
             connectors: '渠道连接',
-            campaigns: '营销活动',
+            campaigns: '群发活动',
             templates: '话术模板',
             links: '短链管理',
             reports: '数据报表',
@@ -262,7 +262,7 @@ export const translations = {
         },
         links: {
             title: '短链管理',
-            subtitle: '为您的营销活动创建并追踪短链。',
+            subtitle: '为您的群发活动创建并追踪短链。',
             create: '新建短链',
             table: {
                 title: '标题',
@@ -275,7 +275,7 @@ export const translations = {
             },
             sources: {
                 manual: '手动创建',
-                campaign: '营销活动',
+                campaign: '群发活动',
             }
         },
         dashboard: {
@@ -309,7 +309,7 @@ export const translations = {
             }
         },
         campaigns: {
-            title: '营销活动',
+            title: '群发活动',
             subtitle: '创建并监控您的消息群发任务。',
             create: '新建活动',
             steps: {
@@ -361,7 +361,7 @@ export const translations = {
             step2: '字段映射',
             step3: '预览 & 完成',
             dragText: '点击或拖拽文件到此处上传',
-            supportText: '支持单文件或批量上传。严禁上传公司数据或其他违禁文件',
+            supportText: '支持单文件或批量上传。严禁上传 company 数据或其他违禁文件',
             mapTitle: '匹配文件字段到系统字段',
             fileCol: '文件列',
             ready: '准备导入',
