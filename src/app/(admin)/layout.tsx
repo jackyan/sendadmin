@@ -15,7 +15,7 @@ export default function AdminLayout({
     return (
         <Layout style={{ minHeight: '100vh' }}>
             <Sidebar />
-            <Layout style={{ marginLeft: 240 }}>
+            <Layout style={{ marginLeft: 260, background: '#f8fafc' }}>
                 <Header />
                 <Content style={{ margin: '24px 24px 0', overflow: 'initial' }}>
                     <div className="max-w-7xl mx-auto pb-12">
